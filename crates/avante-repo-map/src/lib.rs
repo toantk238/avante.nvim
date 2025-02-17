@@ -65,6 +65,8 @@ fn get_ts_language(language: &str) -> Option<LanguageFn> {
         "scala" => Some(tree_sitter_scala::LANGUAGE),
         "elixir" => Some(tree_sitter_elixir::LANGUAGE),
         "csharp" => Some(tree_sitter_c_sharp::LANGUAGE),
+        "java" => Some(tree_sitter_java::LANGUAGE),
+        "kotlin" => Some(tree_sitter_kotlin::LANGUAGE),
         _ => None,
     }
 }
@@ -82,6 +84,8 @@ const RUBY_QUERY: &str = include_str!("../queries/tree-sitter-ruby-defs.scm");
 const SCALA_QUERY: &str = include_str!("../queries/tree-sitter-scala-defs.scm");
 const ELIXIR_QUERY: &str = include_str!("../queries/tree-sitter-elixir-defs.scm");
 const CSHARP_QUERY: &str = include_str!("../queries/tree-sitter-c-sharp-defs.scm");
+const KOTLIN_QUERY: &str = include_str!("../queries/tree-sitter-kotlin-defs.scm");
+const JAVA_QUERY: &str = include_str!("../queries/tree-sitter-java-defs.scm");
 
 fn get_definitions_query(language: &str) -> Result<Query, String> {
     let ts_language = get_ts_language(language);
@@ -103,6 +107,8 @@ fn get_definitions_query(language: &str) -> Result<Query, String> {
         "scala" => SCALA_QUERY,
         "elixir" => ELIXIR_QUERY,
         "csharp" => CSHARP_QUERY,
+        "kotlin" => KOTLIN_QUERY,
+        "java" => JAVA_QUERY,
         _ => return Err(format!("Unsupported language: {language}")),
     };
     let query = Query::new(&ts_language.into(), contents)

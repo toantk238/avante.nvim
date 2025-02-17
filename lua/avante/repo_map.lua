@@ -8,6 +8,7 @@ local filetype_map = {
   ["typescriptreact"] = "typescript",
   ["cs"] = "csharp",
   ["kotlin"] = "kotlin",
+  ["java"] = "java",
 }
 
 ---@class AvanteRepoMap
